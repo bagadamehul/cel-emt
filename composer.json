@@ -1,0 +1,19 @@
+{
+    "name": "cel/emt",
+    "description": "celcius mysql tool",
+    "autoload": {
+        "psr-4": {
+            "Cel\\Emt\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bagada Mehul",
+            "email": "bagadamehul615@gmail.com"
+        }
+    ],
+    "type":"Library",
+    "license":"MIT",
+    "prefer-stable": true,
+    "require": {}
+}
