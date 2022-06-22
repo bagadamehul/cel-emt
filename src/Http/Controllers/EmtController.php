@@ -1,8 +1,8 @@
 <?php
-namespace Enbolt\Emt\Http\Controllers;
+namespace Cel\Emt\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Enbolt\Emt\ApprovalPrequel;
+use Cel\Emt\ApprovalPrequel;
 use Auth;
 use DB;
 use Illuminate\Http\Request;

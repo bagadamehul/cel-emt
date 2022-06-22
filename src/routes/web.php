@@ -1,7 +1,7 @@
 <?php
 
  
-Route::group(['prefix' => 'admin', 'middleware' => 'admin','namespace' => 'Enbolt\Emt\Http\Controllers'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin','namespace' => 'Cel\Emt\Http\Controllers'], function () {
 	Route::get('/emt/index', 'EmtController@index')->name('emt.index');
 	Route::post('/emt/run', 'EmtController@run')->name('emt.run');
 	Route::get('/emt/get-approval-list', 'EmtController@getApprovalList')->name('emt.getApprovalList');

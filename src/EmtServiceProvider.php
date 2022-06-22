@@ -1,6 +1,6 @@
 <?php
 
-namespace Enbolt\Emt;
+namespace Cel\Emt;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -28,6 +28,6 @@ class EmtServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Enbolt\Emt\Http\Controllers\EmtController');
+        $this->app->make('Cel\Emt\Http\Controllers\EmtController');
     }
 }
