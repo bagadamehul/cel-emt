@@ -4,7 +4,19 @@
     <title>Celcius</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/vendors/css/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/css/bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/css/bootstrap-extended.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/css/colors.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/css/components.css') }}">
+    <script src="{{ asset('adminTheme/app-assets/vendors/js/vendors.min.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/js/core/app-menu.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/js/core/app.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/js/scripts/components.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,7 +25,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script> 
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script> 
-    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script> 
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>  -->
     <style type="text/css">
         .dataTables_filter{
             /*text-align: right;*/
@@ -105,7 +117,7 @@
         .text-red{
             color: red;
         }
-        .text-enbolt{
+        .text-celcius{
             color: #2D44AC;
         }
         @media(min-width:768px) {
@@ -144,7 +156,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        <strong>ENBOLT</strong>
+                        <strong>CELCIUS</strong>
                     </a>
                 </li>
                 <hr>
@@ -168,7 +180,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-8">
-                        <h2 style="margin-top:0px;"><span class="text-enbolt">E</span>nbolt <span class="text-enbolt">M</span>ySQL <span class="text-enbolt">T</span>ool</h2>
+                        <h2 style="margin-top:0px;"><span class="text-celcius">C</span>elcius <span class="text-celcius">M</span>ySQL <span class="text-celcius">T</span>ool</h2>
                         <p>The form below contains a textarea for query:</p>
                     </div>
                     <div class="col-md-4">
@@ -180,7 +192,7 @@
                 <form method="post" action="{{route('emt.run')}}">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="comment">query:</label>
+                        <label for="comment">Query:</label>
                         <textarea class="form-control" name="qry" required="required" rows="5" id="comment">{{ old('qry') }}</textarea>
                         <span class="text-danger">
                             @if(\Session::has('error'))
