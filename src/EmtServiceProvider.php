@@ -17,7 +17,7 @@ class EmtServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/migrations');
         $this->loadViewsFrom(__DIR__.'/views', 'emt');
         $this->publishes([
-            __DIR__.'/views' => base_path('resources/views/Theme/Admin'),
+            __DIR__.'/views' => base_path('resources/views/admin'),
         ]);
     }
 
