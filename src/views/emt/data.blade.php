@@ -4,12 +4,18 @@
     <title>Celcius MySQL Tool</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet" />
-    <!--  Plugin for DataTables.net  -->
-    <script src="{{asset('/adminTheme/js/jquery.datatables.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/vendors/css/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/css/bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/css/bootstrap-extended.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/css/colors.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/css/components.css') }}">
+    <script src="{{ asset('adminTheme/app-assets/vendors/js/vendors.min.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/js/core/app-menu.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/js/core/app.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/js/scripts/components.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('adminTheme/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
     <style type="text/css">
         .text-celcius{
             color: #2D44AC;
@@ -80,8 +86,8 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <button class="btn btn-info btn-sm custom-search-button">Search</button>
-                                                <button class="btn btn-danger btn-sm search-reset-button">Reset</button>
+                                                <button class="btn btn-info custom-search-button">Search</button>
+                                                <button class="btn btn-danger search-reset-button">Reset</button>
                                             </div>
                                         </div>
                                     </div>
