@@ -1,6 +1,6 @@
 <?php
 
-namespace Enbolt\Emt;
+namespace Cel\Emt;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
