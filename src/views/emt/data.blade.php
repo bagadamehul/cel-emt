@@ -20,10 +20,199 @@
         .text-celcius{
             color: #2D44AC;
         }
+        .dataTables_filter{
+            /*text-align: right;*/
+        }
+        #wrapper {
+            padding-left: 0;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+        #wrapper.toggled {
+            padding-left: 250px;
+        }
+        #sidebar-wrapper {
+            z-index: 1000;
+            position: fixed;
+            left: 250px;
+            width: 0;
+            height: 100%;
+            margin-left: -250px;
+            overflow-y: auto;
+            background: #fff;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+        #wrapper.toggled #sidebar-wrapper {
+            width: 250px;
+        }
+        #page-content-wrapper {
+            width: 100%;
+            position: absolute;
+            padding: 15px;
+        }
+        #wrapper.toggled #page-content-wrapper {
+            position: absolute;
+            margin-right: -250px;
+        }
+        /* Sidebar Styles */
+        .sidebar-nav {
+            position: absolute;
+            top: 0;
+            width: 305px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .sidebar-nav li {
+            text-indent: 5px;
+            padding-bottom: 2px;
+        }
+        .sidebar-nav li a {
+            display: block;
+            text-decoration: none;
+            color: #2D44AC;
+        }
+        .sidebar-nav li a span:hover {
+            text-decoration: none;
+            color: red;
+            background: rgba(255,255,255,0.2);
+        }
+        .sidebar-nav li a:active,
+        .sidebar-nav li a:focus {
+            text-decoration: none;
+        }
+        .sidebar-nav > .sidebar-brand {
+            font-size: 25px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .sidebar-nav > .sidebar-brand a {
+            color: red;
+            position: relative;
+            top: 10px;
+        }
+        .sidebar-nav > .sidebar-brand a:hover {
+            color: red;
+            background: none;
+        }
+        .column-list{
+            padding-left: 30px;
+        }
+        .column-list li{
+            list-style-type: none;
+            font-size: 12px;
+        }
+        .text-red{
+            color: red;
+        }
+        .text-celcius{
+            color: #2D44AC;
+        }
+        @media(min-width:768px) {
+            #wrapper {
+                padding-left: 330px;
+            }
+            #wrapper.toggled {
+                padding-left: 0;
+            }
+            #sidebar-wrapper {
+                width: 325px;
+            }
+            #wrapper.toggled #sidebar-wrapper {
+                width: 0;
+            }
+            #page-content-wrapper {
+                padding: 20px;
+                position: relative;
+            }
+            #wrapper.toggled #page-content-wrapper {
+                position: relative;
+                margin-right: 0;
+            }
+            .main-content{
+                padding: 10px;
+            }
+            .display-none{
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid" id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <strong>CELCIUS</strong>
+                    </a>
+                </li>
+                <hr>
+                @php 
+                    $tableNameInDBName = 'Tables_in_'.env('DB_DATABASE');
+                    $tablesList = DB::select('SHOW TABLES');
+                @endphp
+                @foreach ($tablesList as $key => $value)
+                    <li>
+                        <a href="#"><span class="column-list-open"><i class="fa fa-plus"></i></span> <span class="table-name">{{$value->$tableNameInDBName}}</span> <span class="select-query-span" table-name="{{$value->$tableNameInDBName}}">select</span></a>
+                        <ul class="column-list display-none">
+                            @php
+                                $columnList = \Schema::getColumnListing($value->$tableNameInDBName);
+                            @endphp
+                            @foreach($columnList as $column)
+                                <li>{{$column}}</li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="row main-content">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2 style="margin-top:0px;"><span class="text-celcius">C</span>elcius <span class="text-celcius">M</span>ySQL <span class="text-celcius">T</span>ool</h2>
+                        <p>The form below contains a textarea for query:</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="graph pull-right">
+                            <a href="{{ route('emt.mySqlStatistics') }}" class="btn btn-primary">MYSQL Statistics</a>
+                        </div>
+                    </div>
+                </div>
+                <form method="post" action="{{route('emt.run')}}">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="comment">Query:</label>
+                        <textarea class="form-control" name="qry" required="required" rows="5" id="comment">{{ old('qry') }}</textarea>
+                        <span class="text-danger">
+                            @if(\Session::has('error'))
+                                {{\Session::get('error')}}
+                                @php \Session::forget('error') @endphp
+                            @endif
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Format:</label>
+                        <select class="form-control" name="format" id="format">
+                            <option value="">Select Format</option>
+                            <option value="Array">Array</option>
+                            <option value="Json">Json</option>
+                        </select>      
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="submit" value="SUBMIT" class="btn btn-success">Execute</button>
+                        <button type="submit" name="submit" value="DOWNLOAD" class="btn btn-info">Download CSV</button>
+                        <button type="submit" name="submit" value="DOWNLOADSQL" class="btn btn-primary">Download SQL</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="row" style="margin-top:10px;">
             <div class="col-md-8">
                 <h2 class="text-celcius" style="margin-top:0px;"><span class="text-celcius">C</span>elcius <span class="text-celcius">M</span>ySQL <span class="text-celcius">T</span>ool</h2>
@@ -47,6 +236,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <hr>
+                            @if(!empty($data) && count($data) > 0)
                             <div class="">
                                 @php
                                     $columnArray = (array) json_decode(json_encode($data[0]));
@@ -111,6 +301,9 @@
                                     </tfoot>
                                 </table>
                             </div>
+                            @else
+                                <h2>No Records Found !!</h2>
+                            @endif
                         </div>
                     </div>
                   @endif
@@ -122,6 +315,7 @@
     </div>
 </body>
 <script type="text/javascript">
+    @if(($format != 'Array' && $format != 'Json') && (!empty($data) && is_array($data) && count($data) > 0))
     $(document).ready(function() {
         var columnList = <?php echo json_encode($data[0]); ?>;
         var qry = '<?php echo $qry; ?>';
@@ -145,6 +339,13 @@
                 search: "_INPUT_",
                 searchPlaceholder: "Search records",
             },
+            "bStateSave": true,
+            "fnStateSave": function (oSettings, oData) {
+                localStorage.setItem('adminEmtListTables', JSON.stringify(oData));
+            },
+            "fnStateLoad": function (oSettings) {
+                return JSON.parse(localStorage.getItem('adminEmtListTables'));
+            },
             ajax: {
                 url: "{{ route('emt.getQueryData') }}",
                 data: function(d) {
@@ -166,5 +367,23 @@
             $('#datatables').DataTable().draw(true);
         });
     })
+    @endif
+    $("body").on('click','.table-name',function(e) {
+        e.preventDefault();
+        query = $('#comment').val();
+        tableName = $(this).text();
+        query = query+tableName;
+        $('#comment').val(query);
+
+    });
+    $("body").on('click','.column-list-open',function(e) {
+        var columnSpan = $(this).parent().parent();
+        columnSpan.find('.column-list').toggle();
+    });
+    $("body").on('click','.select-query-span',function(e) {
+        var tableName = $(this).attr('table-name');
+        query = 'select * from '+tableName;
+        $('#comment').val(query);
+    });
 </script>
 </html>
