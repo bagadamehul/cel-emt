@@ -128,18 +128,21 @@ class EmtController extends Controller {
 
 			}
 			if (strtolower($first) == "delete") {
+				return redirect()->back();
 				// delete
 				$type = "delete";
 				$flag = false;
 				$status = "0";
 			}
 			if (strtolower($drop_text) == "drop") {
+				return redirect()->back();
 				// drop
 				$type = "drop";
 				$flag = false;
 				$status = "0";
 			}
 			if (strtolower($alter_text) == "alter") {
+				return redirect()->back();
 				// alter
 				$type = "alter";
 				$flag = false;

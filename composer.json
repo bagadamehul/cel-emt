@@ -1,6 +1,6 @@
 {
     "name": "cel/emt",
-    "description": "celcius mysql tool",
+    "description": "mysql tool",
     "autoload": {
         "psr-4": {
             "Cel\\Emt\\": "src/"

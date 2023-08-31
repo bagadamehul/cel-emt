@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Celcius MySQL Tool</title>
+    <title>database MySQL Tool</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('adminTheme/app-assets/vendors/css/vendors.min.css') }}">
@@ -17,7 +17,7 @@
     <script src="{{ asset('adminTheme/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
     <script src="{{ asset('adminTheme/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
     <style type="text/css">
-        .text-celcius{
+        .text-database{
             color: #2D44AC;
         }
         .dataTables_filter{
@@ -110,7 +110,7 @@
         .text-red{
             color: red;
         }
-        .text-celcius{
+        .text-database{
             color: #2D44AC;
         }
         @media(min-width:768px) {
@@ -149,7 +149,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        <strong>CELCIUS</strong>
+                        <strong>database</strong>
                     </a>
                 </li>
                 <hr>
@@ -176,7 +176,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-8">
-                        <h2 style="margin-top:0px;"><span class="text-celcius">C</span>elcius <span class="text-celcius">M</span>ySQL <span class="text-celcius">T</span>ool</h2>
+                        <h2 style="margin-top:0px;"><span class="text-database">C</span>elcius <span class="text-database">M</span>ySQL <span class="text-database">T</span>ool</h2>
                         <p>The form below contains a textarea for query:</p>
                     </div>
                     <div class="col-md-4">
@@ -215,7 +215,7 @@
         </div>
         <div class="row" style="margin-top:10px;">
             <div class="col-md-8">
-                <h2 class="text-celcius" style="margin-top:0px;"><span class="text-celcius">C</span>elcius <span class="text-celcius">M</span>ySQL <span class="text-celcius">T</span>ool</h2>
+                <h2 class="text-database" style="margin-top:0px;"><span class="text-database">C</span>elcius <span class="text-database">M</span>ySQL <span class="text-database">T</span>ool</h2>
             </div>
             <div class="col-md-4">
                 <div class="graph pull-right">
